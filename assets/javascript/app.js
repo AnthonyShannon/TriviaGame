@@ -52,11 +52,17 @@ var questionBank =
         correct: "Morton Salt"
     },
 ]
-
+var i = 0
 $("#startButton").click(function() {
-    $("#questions").text(questionBank[0].question);
-    $("#answerChoices").text(questionBank[0].choices);
+    $("#questions").text(questionBank[i].question);
+    $(".answerA").text(questionBank[i].choices[0]);
+    $(".answerB").text(questionBank[i].choices[1]);
+    $(".answerC").text(questionBank[i].choices[2]);
+    $(".answerD").text(questionBank[i].choices[3]);
+    questionBank[i++];
+    $("#timeLeft").text("Time remaining: " + timeRemaining + " seconds");
 });
+
 
 
 

@@ -1,5 +1,8 @@
 body {
     background: url(../images/parks-and-recreation-wallpapers-31634-6614805.png);
     background-repeat: no-repeat;
-    background-size: fill;
+    background-size: 100%;
+}
+.jumbotron {
+    background-color: lightgreen
 }
