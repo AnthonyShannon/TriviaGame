@@ -6,3 +6,6 @@ body {
 .jumbotron {
     background-color: lightgreen
 }
+.answer:hover {
+    background: green;
+}
