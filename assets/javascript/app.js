@@ -57,6 +57,7 @@ var i = 0
 var intervalId;
 
 
+
 function nextQuestion() {
     questionBank[i++];
     $("#questions").text(questionBank[i].question);
@@ -68,14 +69,37 @@ function nextQuestion() {
 };
 function correctGuess() {
     correctAnswers++;
-    nextQuestion();
     console.log("right: " + correctAnswers);
+    if (i < 8) {
+        nextQuestion();
+    } else {
+        endGame();
+    }
 };
 function wrongGuess() {
     incorrectAnswers++;
-    nextQuestion();
     console.log("wrong: " + incorrectAnswers);
+    if (i < 8) {
+        nextQuestion();
+    } else {
+        endGame();
+    }
 };
+
+function endGame() {
+    $("#questions").hide();
+    $("#0").hide();
+    $("#1").hide();
+    $("#2").hide();
+    $("#3").hide();
+    $("#timeLeft").hide();
+    $(".Correct").append("Correct: " + correctAnswers);
+    $(".Incorrect").text("Incorrect: " + incorrectAnswers);
+    $(".Unanswered").text("Unanswered: " + unansweredQuestions);
+    stopCountDown();
+    stop();
+}
+
 $("#startButton").click(function() {
     $("#questions").text(questionBank[i].question);
     $("#0").text(questionBank[i].choices[0]).attr("data-value", questionBank[i].choices[0]);
@@ -91,9 +115,10 @@ $("#startButton").click(function() {
 
 $(".answer").on("click", function() {
     console.log($(this));
-    console.log("correct = " + questionBank[i].correct)
+    console.log("correct = " + questionBank[i].correct);
     console.log("i = " + i);
-    if ($(this) === questionBank[i].correct) {
+    console.log($(this).text());
+    if ($(this).text() === questionBank[i].correct) {
         correctGuess();
     } else {
         wrongGuess();
@@ -102,7 +127,12 @@ $(".answer").on("click", function() {
 function run() {
     clearInterval(intervalId);
     intervalId = setInterval(countDown, 1000);
-  }
+}
+function stop() {
+    clearInterval(intervalId);
+    intervalId = setInterval(countDown, none);
+    timeRemaining = 10;
+}
 function countDown() {
     timeRemaining--;
     $("#timeLeft").text("Time remaining: " + timeRemaining + " seconds");
@@ -113,6 +143,16 @@ function countDown() {
         console.log("unanswered: " + unansweredQuestions);
     };
 }
+        function stopCountDown() {
+            timeRemaining === 10;
+            $("#timeLeft").text("Time remaining: " + timeRemaining + " seconds");
+            if (timeRemaining <= 0) {
+                timeRemaining = 11;
+                unansweredQuestions++;
+                nextQuestion();
+                console.log("unanswered: " + unansweredQuestions);
+            };
+        }
 
 
 
