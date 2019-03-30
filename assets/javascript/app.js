@@ -4,60 +4,56 @@ var unansweredQuestions = 0;
 var timeRemaining = 11;
 var timerOn = false;
 var gifArray = []
-
-var questionBank = 
-[
-    {
-        question: "On what street is the pit located?",
-        choices: ["Main Street", "Park Ave", "Sullivan Street", "Dogwood Blvd"],
-        correct: "Sullivan Street",
-    },
-    {
-        question: "What item does Andy's neighbor steal from him while he's bathing in the backyard?",
-        choices: ["Stereo", "Guitar", "Lawn mower", "Chair"],
-        correct: "Stereo",
-    },
-    {
-        question: "What does government employee Ron Swanson hate more than anything?",
-        choices: ["Music", "Government", "Nature", "Big business"],
-        correct: "Government",
-    },
-    {
-        question: "What is Ron Swansons hidden talent that he keeps from all his co workers and friends?",
-        choices: ["Home brewing beer", "Painting", "Playing the saxophone", "Wood working"],
-        correct: "Playing the saxophone",
-    },
-    {
-        question: "What does Greg Pikitis leave behind after vandalizing the parks department?",
-        choices: ["A joker card", "A peach pit", "Coffee grounds", "A banana peel"],
-        correct: "A peach pit",
-    },
-    {
-        question: "What illness does Andy say Leslie could be suffering from as Ben is taking her to the hospital?",
-        choices: ["Dementia", "Influenza", "Chicken Pox", "Network Connectivity Problems"],
-        correct: "Network Connectivity Problems",
-    },
-    {
-        question: "After losing Li'l Sebastion at the Harvest Festival, where does the team find him?",
-        choices: ["Carousel", "Corn Maze", "Parking Lot", "Petting zoo"],
-        correct: "Corn Maze",
-    },
-    {
-        question: "What is the title of the song Andy writes for Li'l Sebastion?",
-        choices: ["5,000 Candles in the Wind", "Indiana's greatest treasure", "Bye Bye Li'l Sebastion", "The little horsey"],
-        correct: "5,000 Candles in the Wind",
-    },
-    {
-        question: "Ron Swanson only endorses items he uses exclusively and believes in it. What is one of those items?",
-        choices: ["The Lodge Cast Iron Skillets", "Sweet Baby Rays BBQ Sauce", "Ford Vehicles", "Morton Salt"],
-        correct: "Morton Salt",
-    },
-]
+var questionBank =
+    [
+        {
+            question: "On what street is the pit located?",
+            choices: ["Main Street", "Park Ave", "Sullivan Street", "Dogwood Blvd"],
+            correct: "Sullivan Street",
+        },
+        {
+            question: "What item does Andy's neighbor steal from him while he's bathing in the backyard?",
+            choices: ["Stereo", "Guitar", "Lawn mower", "Chair"],
+            correct: "Stereo",
+        },
+        {
+            question: "What does government employee Ron Swanson hate more than anything?",
+            choices: ["Music", "Government", "Nature", "Big business"],
+            correct: "Government",
+        },
+        {
+            question: "What is Ron Swansons hidden talent that he keeps from all his co workers and friends?",
+            choices: ["Home brewing beer", "Painting", "Playing the saxophone", "Wood working"],
+            correct: "Playing the saxophone",
+        },
+        {
+            question: "What does Greg Pikitis leave behind after vandalizing the parks department?",
+            choices: ["A joker card", "A peach pit", "Coffee grounds", "A banana peel"],
+            correct: "A peach pit",
+        },
+        {
+            question: "What illness does Andy say Leslie could be suffering from as Ben is taking her to the hospital?",
+            choices: ["Dementia", "Influenza", "Chicken Pox", "Network Connectivity Problems"],
+            correct: "Network Connectivity Problems",
+        },
+        {
+            question: "After losing Li'l Sebastion at the Harvest Festival, where does the team find him?",
+            choices: ["Carousel", "Corn Maze", "Parking Lot", "Petting zoo"],
+            correct: "Corn Maze",
+        },
+        {
+            question: "What is the title of the song Andy writes for Li'l Sebastion?",
+            choices: ["5,000 Candles in the Wind", "Indiana's greatest treasure", "Bye Bye Li'l Sebastion", "The little horsey"],
+            correct: "5,000 Candles in the Wind",
+        },
+        {
+            question: "Ron Swanson only endorses items he uses exclusively and believes in it. What is one of those items?",
+            choices: ["The Lodge Cast Iron Skillets", "Sweet Baby Rays BBQ Sauce", "Ford Vehicles", "Morton Salt"],
+            correct: "Morton Salt",
+        },
+    ]
 var i = 0
 var intervalId;
-
-
-
 function nextQuestion() {
     questionBank[i++];
     $("#questions").text(questionBank[i].question);
@@ -85,7 +81,6 @@ function wrongGuess() {
         endGame();
     }
 };
-
 function endGame() {
     $("#questions").hide();
     $("#0").hide();
@@ -99,8 +94,7 @@ function endGame() {
     stopCountDown();
     stop();
 }
-
-$("#startButton").click(function() {
+$("#startButton").click(function () {
     $("#questions").text(questionBank[i].question);
     $("#0").text(questionBank[i].choices[0]).attr("data-value", questionBank[i].choices[0]);
     $("#1").text(questionBank[i].choices[1]);
@@ -111,9 +105,7 @@ $("#startButton").click(function() {
     run();
     countDown();
 });
-
-
-$(".answer").on("click", function() {
+$(".answer").on("click", function () {
     console.log($(this));
     console.log("correct = " + questionBank[i].correct);
     console.log("i = " + i);
@@ -140,22 +132,8 @@ function countDown() {
         timeRemaining = 11;
         unansweredQuestions++;
         nextQuestion();
-        console.log("unanswered: " + unansweredQuestions);
     };
 }
-        function stopCountDown() {
-            timeRemaining === 10;
-            $("#timeLeft").text("Time remaining: " + timeRemaining + " seconds");
-            if (timeRemaining <= 0) {
-                timeRemaining = 11;
-                unansweredQuestions++;
-                nextQuestion();
-                console.log("unanswered: " + unansweredQuestions);
-            };
-        }
-
-
-
 
 
 /* Questions/right answers:
