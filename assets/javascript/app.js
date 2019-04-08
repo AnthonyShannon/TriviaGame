@@ -94,7 +94,7 @@ function endGame() {
     stopCountDown();
     stop();
 }
-$("#startButton").click(function () {
+$(document).on("click", "#startButton", function () {
     $("#questions").text(questionBank[i].question);
     $("#0").text(questionBank[i].choices[0]).attr("data-value", questionBank[i].choices[0]);
     $("#1").text(questionBank[i].choices[1]);
