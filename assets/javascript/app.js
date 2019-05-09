@@ -97,7 +97,7 @@ function endGame() {
     } else if ( correctAnswers > 0 && correctAnswers < 5) {
         $("#questions").text("I mean, you got some right. Not very impressive though. Have you ever even seen the show?");
     } else {
-        $("#questions").text("WOW! You got absolutely none right. You could literally pick random answeres for every question and do better. How is this even possible. Just give up now, theres no hope for you!")
+        $("#questions").text("WOW! You got absolutely none right. You could literally pick random answeres for every question and do better. How is this even possible? Just give up now, theres no hope for you!")
     }
     stopCountDown();
     stop();
