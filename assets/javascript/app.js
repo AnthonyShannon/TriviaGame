@@ -22,7 +22,7 @@ var questionBank =
             correct: "Government",
         },
         {
-            question: "What is Ron Swansons hidden talent that he keeps from all his co workers and friends?",
+            question: "What is Ron Swansons 'hidden' talent that he keeps from all his co workers and friends?",
             choices: ["Home brewing beer", "Painting", "Playing the saxophone", "Wood working"],
             correct: "Playing the saxophone",
         },
@@ -82,7 +82,6 @@ function wrongGuess() {
     }
 };
 function endGame() {
-    $("#questions").hide();
     $("#0").hide();
     $("#1").hide();
     $("#2").hide();
@@ -91,6 +90,15 @@ function endGame() {
     $(".Correct").append("Correct: " + correctAnswers);
     $(".Incorrect").text("Incorrect: " + incorrectAnswers);
     $(".Unanswered").text("Unanswered: " + unansweredQuestions);
+    if (correctAnswers === 9) {
+        $("#questions").text("WOW! You must really love this show. You should probably spend more time actually outside and at a park though... Seriously, spend more time outside.");
+    } else if (correctAnswers >= 5 && correctAnswers < 9) {
+        $("#questions").text("It seems you've seen this show before, but you're not quite an expert about the great 'city' of Pawnee, IN");
+    } else if ( correctAnswers > 0 && correctAnswers < 5) {
+        $("#questions").text("I mean, you got some right. Not very impressive though. Have you ever even seen the show?");
+    } else {
+        $("#questions").text("WOW! You got absolutely none right. You could literally pick random answeres for every question and do better. How is this even possible. Just give up now, theres no hope for you!")
+    }
     stopCountDown();
     stop();
 }
