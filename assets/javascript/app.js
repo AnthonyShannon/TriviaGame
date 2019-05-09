@@ -114,10 +114,6 @@ $(document).on("click", "#startButton", function () {
     countDown();
 });
 $(".answer").on("click", function () {
-    console.log($(this));
-    console.log("correct = " + questionBank[i].correct);
-    console.log("i = " + i);
-    console.log($(this).text());
     if ($(this).text() === questionBank[i].correct) {
         correctGuess();
     } else {
